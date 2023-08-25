@@ -14,7 +14,7 @@ jobs:
     uses: adya/pack-skse-mod/.github/workflows/pack.yml@main
     with:
       FOMOD_INCLUDE_PDB: true
-      FOMOD_MOD_NAME: "CombatView"
+      FOMOD_MOD_NAME: "SwitchViewSKSE"
       FOMOD_MOD_AUTHOR: "Styyx"
       FOMOD_MOD_NEXUS_ID: "99157"
       FOMOD_REQUIRED_INSTALLATION_DIR: "Skyrim/Data"
