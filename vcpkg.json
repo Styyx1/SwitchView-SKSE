@@ -1,0 +1,14 @@
+{
+  "name": "switchviewskse",
+  "version-string": "0.0.1",
+  "description": "switches to 3rd person view when you enter combat and switches back to the previous view afterwards",
+  "homepage": "",
+  "license": "MIT",
+  "dependencies": [
+    "boost-stl-interfaces",
+    "rsm-binary-io",
+    "spdlog",
+    "xbyak"
+  ],
+  "builtin-baseline": "78b61582c9e093fda56a01ebb654be15a0033897"
+}
