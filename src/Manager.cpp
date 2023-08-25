@@ -6,7 +6,7 @@ void CameraSwitch::ViewChanger::Change()
 	const auto p_cam = RE::PlayerCamera::GetSingleton();
 	static bool view_saved{false};
 
-	if (player->IsInCombat())
+	if (p_cam->IsInFirstPerson() && player->IsInCombat())
 	{
 		view_saved = true;
 		p_cam->ForceThirdPerson();
