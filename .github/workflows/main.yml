@@ -23,4 +23,4 @@ jobs:
       FOMOD_AE_NAME: 'SSE v1.6.640+ ("Anniversary Edition")'
       FOMOD_AE_DESCR: 'Select this if you are using Skyrim Anniversary Edition v1.6.640 or higher.'
       FOMOD_AE_MIN_GAME_VERSION: '1.6'
-      VCPKG_COMMIT_ID: 'b7dba7f9aad09a56900f21cd78cfda1258e54e38'
+      VCPKG_COMMIT_ID: '78b61582c9e093fda56a01ebb654be15a0033897'
