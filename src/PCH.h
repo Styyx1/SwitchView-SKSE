@@ -7,6 +7,7 @@
 #include "SKSE/SKSE.h"
 #include <spdlog/sinks/basic_file_sink.h>
 
+
 #define DLLEXPORT __declspec(dllexport)
 
 namespace logger = SKSE::log;

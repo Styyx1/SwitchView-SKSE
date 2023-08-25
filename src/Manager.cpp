@@ -1,14 +1,15 @@
 #include "Manager.h"
+
 void CameraSwitch::ViewChanger::Change()
 {
 	const auto player = RE::PlayerCharacter::GetSingleton();
 	const auto p_cam = RE::PlayerCamera::GetSingleton();
 	static bool view_saved{false};
 
-	if (p_cam->IsInFirstPerson() && player->IsInCombat())
+	if (player->IsInCombat())
 	{
 		view_saved = true;
-		p_cam->ForceThirdPerson();	
+		p_cam->ForceThirdPerson();
 		//logger::info("changed View");		
 	}		
 	if (p_cam->IsInThirdPerson() && !player->IsInCombat() && view_saved) {

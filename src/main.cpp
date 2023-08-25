@@ -78,7 +78,7 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 #else
 	logger::info("Using Release build");
 #endif
-
+	
 	SKSE::Init(a_skse);
 	SKSE::AllocTrampoline(64);
 	CameraSwitch::Hooks::InstallActorUpdateHook();
