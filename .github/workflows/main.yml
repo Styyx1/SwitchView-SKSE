@@ -20,7 +20,9 @@ jobs:
       FOMOD_REQUIRED_INSTALLATION_DIR: "Skyrim/Data"
       PUBLISH_ARCHIVE_TYPE: '7z'
       FOMOD_SE_MIN_GAME_VERSION: '1.5'
-      FOMOD_AE_NAME: 'SSE v1.6.640+ ("Anniversary Edition")'
-      FOMOD_AE_DESCR: 'Select this if you are using Skyrim Anniversary Edition v1.6.640 or higher.'
+      FOMOD_SE_NAME: 'SSE v1.5.97'
+      FOMOD_SE_DESCT: 'Select this if you are using Skyrim version 1.5.97'
+      FOMOD_AE_NAME: 'SSE v1.6.640+'
+      FOMOD_AE_DESCR: 'Select this if you are using Skyrim version 1.6.640 or higher.'
       FOMOD_AE_MIN_GAME_VERSION: '1.6'
       VCPKG_COMMIT_ID: '78b61582c9e093fda56a01ebb654be15a0033897'
