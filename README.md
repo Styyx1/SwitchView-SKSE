@@ -22,10 +22,10 @@ Automatically switches the camera to Third/First person in combat/when weapons a
 ### Build Instructions
 ```
 git clone --recursive https://github.com/Styyx1/SwitchView-SKSE
-cd SwitchView-SKSE
-cmake --build build --config Release
-cmake --build buildae --config Release
 ```
+then open the folder with Visual Studio, select the preset and build it
+
+for the release config, you can simply run the build.bat file afterwards
 
 ### Compatibility 
 works with Skyrim 1.5.97 and 
@@ -36,7 +36,7 @@ Does NOT work with VR or any 1.6 version below 1.6.629
 ### Credits:
 dann1c - for helping me with the Clib setup  
 nightfallstorm - for the 1.6 offset 
-Loki - for the hook in RegenAdjuster
+Loki - for the hook in RegenAdjuster  
 suncalluntojethr0 - for the actual idea for the mod  
-po3 - for lots of references
+po3 - for lots of references  
 SKSE team and everyone involved in CommonLib  
