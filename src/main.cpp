@@ -1,9 +1,10 @@
 #include "Hooks.h"
+#include "Settings.h"
 
 void MessageHandler(SKSE::MessagingInterface::Message* a_message)
 {
 	if (a_message->type == SKSE::MessagingInterface::kPostLoad) {
-		
+		Settings::LoadSettings();
 	}
 }
 
@@ -23,7 +24,7 @@ extern "C" DLLEXPORT constinit auto SKSEPlugin_Version = []() {
 extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Query(const SKSE::QueryInterface* a_skse, SKSE::PluginInfo* a_info)
 {
 	a_info->infoVersion = SKSE::PluginInfo::kVersion;
-	a_info->name = "SwitchView-SKSE";
+	a_info->name = "SwitchViewSKSE";
 	a_info->version = Version::MAJOR;
 
 	if (a_skse->IsEditor()) {
@@ -79,11 +80,10 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 	logger::info("Using Release build");
 #endif
 	
-	SKSE::Init(a_skse);
+	SKSE::Init(a_skse);	
 	SKSE::AllocTrampoline(64);
 	CameraSwitch::Hooks::InstallActorUpdateHook();
 	logger::info("Hook installed");
-
 	const auto messaging = SKSE::GetMessagingInterface();
 	messaging->RegisterListener(MessageHandler);
 
