@@ -3,8 +3,10 @@
 
 void MessageHandler(SKSE::MessagingInterface::Message* a_message)
 {
-	if (a_message->type == SKSE::MessagingInterface::kPostLoad) {
+	if (a_message->type == SKSE::MessagingInterface::kInputLoaded) {
 		//Settings::LoadSettings();
+		CameraSwitch::Hooks::InstallActorUpdateHook();
+		logger::info("Hook installed");
 	}
 }
 
@@ -81,9 +83,7 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 #endif
 	
 	SKSE::Init(a_skse);	
-	SKSE::AllocTrampoline(64);
-	CameraSwitch::Hooks::InstallActorUpdateHook();
-	logger::info("Hook installed");
+	SKSE::AllocTrampoline(64);	
 	const auto messaging = SKSE::GetMessagingInterface();
 	messaging->RegisterListener(MessageHandler);
 
