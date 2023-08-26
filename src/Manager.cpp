@@ -3,65 +3,73 @@
 
 void CameraSwitch::ViewChanger::Change()
 {
-	const auto& player = RE::PlayerCharacter::GetSingleton();
-	const auto& p_cam = RE::PlayerCamera::GetSingleton();
-	const auto settings = Settings::GetSingleton();
+	const auto player = RE::PlayerCharacter::GetSingleton();
+	const auto p_cam = RE::PlayerCamera::GetSingleton();
 	static bool view_saved{ false };
-	if (Settings::in_combat == true) {
-		logger::info("In Combat settings active");
-		switch (Settings::lock_third_person) {
-		case (true):
-			{
-				if (p_cam->IsInFirstPerson() && player->IsInCombat()) {
-					view_saved = true;
-					p_cam->ForceThirdPerson();
-				}
-				if (p_cam->IsInThirdPerson() && !player->IsInCombat() && view_saved) {
-					view_saved = false;
-					p_cam->ForceFirstPerson();
-				}
-				break;
-			case (false):
-				if (p_cam->IsInThirdPerson() && player->IsInCombat()) {
-					view_saved = true;
-					p_cam->ForceFirstPerson();
-				}
-				if (p_cam->IsInFirstPerson() && !player->IsInCombat() && view_saved) {
-					view_saved = false;
-					p_cam->ForceThirdPerson();
-				}
-				break;
-			}
-		}
+
+	if (p_cam->IsInFirstPerson() && player->IsInCombat()) {
+		view_saved = true;
+		p_cam->ForceThirdPerson();
+		logger::info("changed View");
 	}
-	if (settings->in_combat == false) {
-		switch (Settings::lock_third_person) {
-		case (true):
-			{
-				if (p_cam->IsInFirstPerson() && player->IsWeaponDrawn()) {
-					view_saved = true;
-					p_cam->ForceThirdPerson();
-				}
-				if (p_cam->IsInThirdPerson() && !player->IsWeaponDrawn() && view_saved) {
-					view_saved = false;
-					p_cam->ForceFirstPerson();
-				}
-				break;
-			case (false):
-				if (p_cam->IsInThirdPerson() && player->IsWeaponDrawn()) {
-					view_saved = true;
-					p_cam->ForceFirstPerson();
-				}
-				if (p_cam->IsInFirstPerson() && !player->IsWeaponDrawn() && view_saved) {
-					view_saved = false;
-					p_cam->ForceThirdPerson();
-				}
-				break;
-			}
-		}
-	};
+	if (p_cam->IsInThirdPerson() && !player->IsInCombat() && view_saved) {
+		view_saved = false;
+		p_cam->ForceFirstPerson();
+		logger::info("returned to init view");
+	}
 };
-	void CameraSwitch::ViewChanger::ActorUpdateF(RE::Actor* a_actor, float a_zPos, RE::TESObjectCELL* a_cell)
+	//if (settings->in_combat && settings->lock_third_person) {
+	//	if (p_cam->IsInFirstPerson() && player->IsInCombat()) {
+	//		view_saved = true;
+	//		logger::info("saved view in combat and in third person");
+	//		p_cam->ForceThirdPerson();
+	//	};
+	//	if (p_cam->IsInThirdPerson() && !player->IsInCombat() && view_saved) {
+	//		view_saved = false;
+	//		logger::info("reverted bool in combat and 3rd person");
+	//		p_cam->ForceFirstPerson();
+	//		logger::info("reverted view in combat and in third person");
+	//	}	
+	//}
+	//if (settings->in_combat && !settings->lock_third_person) {
+	//	if (p_cam->IsInThirdPerson() && player->IsInCombat()) {
+	//		view_saved = true;
+	//		logger::info("saved view in combat and in first person");
+	//		p_cam->ForceFirstPerson();
+	//	};
+	//	if (p_cam->IsInFirstPerson() && !player->IsInCombat() && view_saved) {
+	//		view_saved = false;
+	//		logger::info("reverted bool in combat and 1st person");
+	//		p_cam->ForceThirdPerson();
+	//	};
+	//}
+	//if (!settings->in_combat && settings->lock_third_person) {
+	//	if (p_cam->IsInFirstPerson() && player->IsWeaponDrawn()) {
+	//		view_saved = true;
+	//		logger::info("saved view outside of combat and in third person");
+	//		p_cam->ForceThirdPerson();
+	//	};
+	//	if (p_cam->IsInThirdPerson() && !player->IsWeaponDrawn() && view_saved) {
+	//		view_saved = false;
+	//		logger::info("reverted bool outside of combat and 3rd person");
+	//		p_cam->ForceFirstPerson();
+	//	};
+	//}
+	//if (!settings->in_combat && !settings->lock_third_person) {
+	//	if (p_cam->IsInThirdPerson() && player->IsInCombat()) {
+	//		view_saved = true;
+	//		logger::info("saved view outside of combat and in first person");
+	//		p_cam->ForceFirstPerson();
+	//	};
+	//	if (p_cam->IsInFirstPerson() && !player->IsInCombat() && view_saved) {
+	//		view_saved = false;
+	//		logger::info("reverted bool outside of combat and 1st person");
+	//		p_cam->ForceThirdPerson();
+	//	}
+	//}
+	
+
+void CameraSwitch::ViewChanger::ActorUpdateF(RE::Actor* a_actor, float a_zPos, RE::TESObjectCELL* a_cell)
 {
 	auto switcher = CameraSwitch::ViewChanger::GetSingleton();
 	switcher->Change();	

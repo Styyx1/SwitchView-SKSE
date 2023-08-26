@@ -4,7 +4,7 @@
 void MessageHandler(SKSE::MessagingInterface::Message* a_message)
 {
 	if (a_message->type == SKSE::MessagingInterface::kPostLoad) {
-		Settings::LoadSettings();
+		//Settings::LoadSettings();
 	}
 }
 
