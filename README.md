@@ -35,7 +35,7 @@ Does NOT work with VR or any 1.6 version below 1.6.629
 
 ### Credits:
 dann1c - for helping me with the Clib setup  
-nightfallstorm - for the 1.6 offset 
+nightfallstorm - for the 1.6 offset  
 Loki - for the hook in RegenAdjuster  
 suncalluntojethr0 - for the actual idea for the mod  
 po3 - for lots of references  
